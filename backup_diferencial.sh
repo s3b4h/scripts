@@ -5,7 +5,7 @@ echo " "
 
 criar_pasta () {
 DATA=`date +%Y%m%d-%k%M`
-DIR_BACKUP=/backup/
+DIR_BACKUP=/backup
 VERI_DIR_BACKUP=`ls -l $DIR_BACKUP/backup-$DATA`
 
 if [ $? = 2 ]; then
