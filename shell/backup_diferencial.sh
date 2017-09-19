@@ -28,7 +28,7 @@ dadosdif() {
 
 SRCDIR="/home/s3b4h/teste" #diretórios que serão feitos backup
 
-DSTDIR=/home/s3b4h/bkp #diretório de destino do backup
+DSTDIR=$DIR_BACKUP/backup-$DATA #diretório de destino do backup
 
 DATA=`date +%Y%m%d-%k%M`
 

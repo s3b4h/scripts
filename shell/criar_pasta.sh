@@ -1,3 +1,5 @@
+#!/bin/bash
+
 criar_pasta () {
 DATA=`date +%Y%m%d-%k%M`
 DIR_BACKUP=/backup/
