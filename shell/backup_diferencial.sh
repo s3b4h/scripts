@@ -28,9 +28,9 @@ dadosdif() {
 
 SRCDIR="/home/s3b4h/teste" #diretórios que serão feitos backup
 
-DSTDIR=/home/s3b4h/bkp #diretório de destino do backup
+DSTDIR=`$DIR_BACKUP/backup-$DATA` #diretório de destino do backup
 
-DATA=`date +%Y%m%d-%k%M`
+DATA_BKP=`date +%Y%m%d-%k%M`
 
 TIME_FIND=-1 #+xx busca arquivos criados existentes a xx minutos (arquivos que t                                                                                        enham mais de xx minutos)
 
@@ -44,7 +44,7 @@ TIME_DEL=+7 # dias em que permanecera o backup diferencial armazenado
 
 #criar o arquivo dif-data.tar no diretório de destino
 
-ARQ=$DSTDIR/dif-$DATA.tar
+ARQ=$DSTDIR/dif-$DATA_BKP.tar
 
 #data de inicio backup
 
@@ -64,7 +64,7 @@ sync
 
 
 
-find $SRCDIR -type f -cmin $TIME_FIND ! -path "/home/s3b4h/teste/regulacao/*" !                                                                                         -path "/home/s3b4h/teste/vendor/*" -exec tar -rvf $ARQ {} ";"
+find $SRCDIR -type f -cmin $TIME_FIND ! -path "/home/s3b4h/teste/regulacao/*" ! -path "/home/s3b4h/teste/vendor/*" -exec tar -rvf $ARQ {} ";"
 
 
 
@@ -139,7 +139,6 @@ echo "Data de inicio: $DATAIN"
 
 
 gzip -9 $DSTDIR/*.tar
-
 
 
 echo "Compactação concluída"
