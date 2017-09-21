@@ -32,7 +32,7 @@ DSTDIR=$DIR_BACKUP/backup-$DATA #diretório de destino do backup
 
 DATA_BKP=`date +%Y%m%d-%k%M`
 
-TIME_FIND=-2400 #+xx busca arquivos criados existentes a xx minutos (arquivos que t                                                                                        enham mais de xx minutos)
+TIME_FIND=-1440 #+xx busca arquivos criados existentes a xx minutos (arquivos que t                                                                                        enham mais de xx minutos)
 
 #-xx arquivos que tenham sido criados nos últimos xx minutos
 
