@@ -9,8 +9,8 @@ VERI_DIR_BACKUP=`ls -l $DIR_BACKUP/backup-dif-$DATA`
 
 if [ $? = 2 ]; then
 
-mkdir -p $DIR_BACKUP/backup-$DATA
-chmod 0777 $DIR_BACKUP/backup-$DATA
+mkdir -p $DIR_BACKUP/backup-dif-$DATA
+chmod 0777 $DIR_BACKUP/backup-dif-$DATA
 echo "Criado diretótio $DIR_BACKUP/backup-dif-$DATA"
 
 else
