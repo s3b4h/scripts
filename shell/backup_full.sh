@@ -1,9 +1,5 @@
 #!/bin/bash
-echo "Programa de backup full"
-#Autor: Jhoni Vieceli
-#Programa de criação de backup full
-#DATA: 04/02/2008
-echo " "
+echo "Backup full"
 
 # criação da pasta
 criar_pasta () {
@@ -24,12 +20,12 @@ echo " Diretório $DIR_BACKUP/backup-full-$DATA existe"
 fi
 
 }
+
 dadosfull() {
 
 SRCDIR="/home/s3b4h/teste" #diretórios que serão feito backup
 DSTDIR=$DIR_BACKUP/backup-full-$DATA #diretório de destino do backup
 DATA=`date +%x-%k%M%S` #pega data atual
-TIME_BKCP=+15 #número de dias em que será deletado o arquivo de backup
 
 #criar o arquivo full-data.tar no diretório de destino
 ARQ=$DSTDIR/$HOSTNAME-full-$DATA.tar.gz
