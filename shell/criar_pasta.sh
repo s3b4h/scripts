@@ -1,8 +1,10 @@
 #!/bin/bash
 
-criar_pasta () {
-DATA=`date +%Y%m%d-%k%M`
-DIR_BACKUP=/backup/
+
+echo " "
+
+DATA=`date +%Y%m%d`
+DIR_BACKUP=/backup
 VERI_DIR_BACKUP=`ls -l $DIR_BACKUP/backup-$DATA`
 
 if [ $? = 2 ]; then
@@ -17,4 +19,3 @@ echo " Diretório $DIR_BACKUP/backup-$DATA existe"
 
 fi
 
-}
