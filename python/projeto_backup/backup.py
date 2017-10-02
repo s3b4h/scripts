@@ -9,14 +9,7 @@ import socket
 """
 Created on Fri Sep 29 13:29:18 2017
 
-@author: sjunior
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 29 09:58:47 2017
-
-@author: sjunior
+@author: s3b4h
 """
 
 
