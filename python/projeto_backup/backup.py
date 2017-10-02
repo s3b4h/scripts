@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+import subprocess
+import ConfigParser
+import time
+import os.path
+import socket
+
 # -*- coding: utf-8 -*-
 """
 Created on Fri Sep 29 13:29:18 2017
@@ -12,11 +19,6 @@ Created on Fri Sep 29 09:58:47 2017
 @author: sjunior
 """
 
-import subprocess
-import ConfigParser
-import time
-import os.path
-
 
 def parse_ambiente():
     config = ConfigParser.ConfigParser()
@@ -27,41 +29,41 @@ def parse_ambiente():
     var_amb = modulo + ' ' + cliente + ' ' + ambiente
     return var_amb
 
+
 def executa_backup():
-        date = (time.strftime("%Y%m%d"))
-        arquivo = '%s-full.tar.gz' % date
-        config = ConfigParser.ConfigParser()
-        config.read("./agent_duo.conf")
-        dir_origem = config.get("diretorios","DIR_ORIGEM")
-        dir_destino = config.get("diretorios","DIR_DESTINO") + "/" + date + "/" + "APP/"
-        #exclude_dir = config.get("diretorios","EXCLUDE_DIR")
-        
-        if os.path.isdir(dir_destino):
-            print ('Ja existe uma pasta com esse nome!')
-        else:
-            os.makedirs(dir_destino)
-            print ('Pasta criada com sucesso!')
+    hostname = socket.gethostname()
+    date = (time.strftime("%Y%m%d"))
+    arquivo = '%s-%s-full.tar.gz' % (hostname, date)
+    config = ConfigParser.ConfigParser()
+    config.read("./agent_duo.conf")
+    dir_origem = config.get("diretorios", "DIR_ORIGEM")
+    dir_destino = config.get("diretorios", "DIR_DESTINO") + "/" + date + "/" + "APP/"
 
-        backup = 'tar cvf %s %s' % (dir_destino + arquivo, dir_origem )
-        print backup
-        return backup
-
-
-def seleciona_ambiente():
-    ambiente = parse_ambiente()
-    if ambiente  == "ambulatorial cross prod":
-        executa_backup()
-           
-    elif ambiente == "urgencia cross prod":
-        print "Ambiente urgencia Cross"
-    elif ambiente == "ambulatorial cross homologacao":
-        print "Ambiente ambulatorial homologacao"
+    if os.path.isdir(dir_destino):
+        print ('Ja existe uma pasta com esse nome!')
     else:
-        print "Definir Ambiente"
+        os.makedirs(dir_destino)
+        print ('Pasta criada com sucesso!')
+
+    exclude_dir = config.get("diretorios","EXCLUDE_DIR")
+    if exclude_dir == '':
+        backup = 'tar cvf %s %s' %(dir_destino + arquivo, dir_origem)
+        print (backup)
+    
+    else:
+        lista_exclusao = ""
+        for item in exclude_dir.split(' '):
+            lista_exclusao += "--exclude=" + str(item) + ' '
+            backup = 'tar cvf %s %s %s' % (dir_destino + arquivo, dir_origem, lista_exclusao)   
+    
+        print (backup)
+    return backup
+
 
 def main():
-    seleciona_ambiente()
     exec_backup = executa_backup()
-    
+
     subprocess.call(exec_backup, shell=True)
+
+
 main()

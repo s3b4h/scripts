@@ -12,3 +12,4 @@ if os.path.isdir(caminho): # vemos de este diretorio ja existe
 else:
     os.mkdir(caminho) # aqui criamos a pasta caso nao exista
     print ('Pasta criada com sucesso!')
+    
