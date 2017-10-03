@@ -93,7 +93,7 @@ def main():
     log         = ' >> %s' % pathlog
     start       = inicio(horaInicio)
     
-    l = open(pathlog, 'w')
+    l = open(pathlog, 'a')
     l.write(start)
     l.close()
     
@@ -104,7 +104,7 @@ def main():
     #fim do backup
     diaInicio   = (time.strftime("%d-%m-%Y"))
     final       = termino(diaInicio, horaInicio, pathlog)
-    r           = open(pathlog, 'w')
+    r           = open(pathlog, 'a')
     r.write(final)
     r.close()
     
