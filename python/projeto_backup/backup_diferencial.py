@@ -9,6 +9,9 @@ import ConfigParser
 import time
 import socket
 
+from sync_inicial import sync_inicial
+sync_inicial()
+
 holderlist=[]
     
 def compareme(dir1, dir2):

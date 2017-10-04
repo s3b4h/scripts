@@ -4,7 +4,7 @@ import ConfigParser
 import socket
 import os
 
-def main():
+def sync_inicial():
     #pega dados do arquivo de confiuguracao
     hostname = socket.gethostname()
     config = ConfigParser.ConfigParser()
@@ -22,4 +22,4 @@ def main():
     sync_inicial='rsync -acv %s %s' %(dir1,dir2)
     subprocess.call(sync_inicial,shell=True)
 if __name__ == '__main__':
- main()
+ sync_inicial()
