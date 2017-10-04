@@ -3,7 +3,6 @@
 import os
 import filecmp
 import re
-#from distutils import dir_util
 import shutil
 import subprocess
 import ConfigParser
@@ -11,7 +10,7 @@ import time
 import socket
 
 holderlist=[]
-
+    
 def compareme(dir1, dir2):
     dircomp=filecmp.dircmp(dir1,dir2)
     only_in_one=dircomp.left_only
@@ -23,9 +22,9 @@ def compareme(dir1, dir2):
             compareme(os.path.abspath(os.path.join(dir1,item)), os.path.abspath(os.path.join(dir2,item)))
         return holderlist
 
-
+    
 def main():
-#pega informacoes do arquivo para montar o tar
+    #pega dados do arquivo de confiuguracao
     hostname = socket.gethostname()
     date = (time.strftime("%Y%m%d"))
     config = ConfigParser.ConfigParser()
@@ -34,23 +33,24 @@ def main():
     dir2 = config.get("diretorios","DIR_COPIA") + "/" + hostname
     dir3 = config.get("diretorios", "DIR_DESTINO") + "/" + date + "/" + "APP/"  + hostname
     arquivo = '%s-diff.tar.gz' % (date)
-    
+      
+    #compara os diretorios
     source_files=compareme(dir1,dir2)
     dir1=os.path.abspath(dir1)
     dir3=os.path.abspath(dir3)
     destination_files=[]
     new_dirs_create=[]
     for item in source_files:
-      destination_files.append(re.sub(dir1, dir3, item) )
+        destination_files.append(re.sub(dir1, dir3, item) )
     for item in destination_files:
-     new_dirs_create.append(os.path.split(item)[0])
+        new_dirs_create.append(os.path.split(item)[0])
     for mydir in set(new_dirs_create):
-      if not os.path.exists(mydir): os.makedirs(mydir)
+        if not os.path.exists(mydir): os.makedirs(mydir)
     #copy pair
     copy_pair=zip(source_files,destination_files)
     for item in copy_pair:
-      if os.path.isfile(item[0]):
-       shutil.copyfile(item[0], item[1])
+        if os.path.isfile(item[0]):
+            shutil.copyfile(item[0], item[1])
      
     #compactar pasta
     if os.path.exists(dir3):
@@ -63,8 +63,7 @@ def main():
         subprocess.call(remove_dir, shell=True)
     else:
         print('Nao existe arquivo diferencial. Nao houve alteracao de arquivos')
-    
-    
+   
     
 if __name__ == '__main__':
- main()
+    main()
