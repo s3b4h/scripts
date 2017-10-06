@@ -9,11 +9,27 @@ import ConfigParser
 import time
 import socket
 
-from sync_inicial import sync_inicial
-sync_inicial()
-
 holderlist=[]
     
+def sync_inicial():
+    #pega dados do arquivo de confiuguracao
+    hostname = socket.gethostname()
+    config = ConfigParser.ConfigParser()
+    config.read("./agent_duo.conf")
+    dir1 = config.get("diretorios", "DIR_ORIGEM")
+    dir2 = config.get("diretorios","DIR_COPIA") + "/" + hostname
+    
+    if os.path.exists(dir2) is True:
+        print('Diretorio ja existe')
+    else:
+        os.makedirs(dir2)
+    
+    if not dir1.endswith('/'): dir1=dir1+'/'
+    
+    sync_inicial='rsync -acv %s %s' %(dir1,dir2)
+    subprocess.call(sync_inicial,shell=True)
+
+
 def compareme(dir1, dir2):
     dircomp=filecmp.dircmp(dir1,dir2)
     only_in_one=dircomp.left_only
@@ -68,5 +84,5 @@ def main():
         print('Nao existe arquivo diferencial. Nao houve alteracao de arquivos')
    
     
-if __name__ == '__main__':
-    main()
+sync_inicial()
+main()
