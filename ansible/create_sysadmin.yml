@@ -1,0 +1,17 @@
+---
+
+- hosts: all
+  become: yes
+  become_user: root
+
+  vars:
+    password: $6$23iakq8EIMvczdUi$psY2MljWGE/9PPwmtTReoXGI6r8K6gZpDNx26IcdgLoxAeu9GHNOLddmf4NbG3L53zlMZpHg3pVOV7OXBIfym.
+
+  tasks:
+
+    - name: create user sysadmin and put on sudoers
+      user: name=sysadmin
+            state=present
+            group=wheel
+            groups=wheel
+            password={{password}}
