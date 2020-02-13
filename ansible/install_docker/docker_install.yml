@@ -1,0 +1,20 @@
+---
+- hosts: all
+  roles:
+  - role: suzuki-shunsuke.docker_ce_centos
+    docker_centos_state: started
+    docker_centos_enabled: yes
+    docker_centos_users:
+    - s3b4h
+    become: yes
+  tasks:
+    - name: Create docker systemd
+      file: path=/etc/systemd/system/docker.service.d state=directory
+    - name: put docker conf file in a docker location
+      copy: src=docker.conf dest=/etc/systemd/system/docker.service.d
+    - name: restart docker daemon
+      command: systemctl daemon-reload
+    - name: retart docker service
+      service:
+        name: docker
+        state: restarted
