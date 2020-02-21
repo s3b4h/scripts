@@ -1,0 +1,4 @@
+Help on method_descriptor:
+
+cclleeaarr(...)
+    L.clear() -> None -- remove all items from L
