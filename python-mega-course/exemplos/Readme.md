@@ -1,4 +1,5 @@
-Summary: Integers, Floats, Lists, Dictionaries, Tuples, dir, help
+# Summary: Integers, Floats, Lists, Dictionaries, Tuples, dir, help
+
 In this section you learned that:
 
 Integers are for representing whole numbers:
@@ -70,7 +71,7 @@ First three items of a list:
 
 days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 days[:3]
-Output:['Mon', 'Tue', 'Wed'] 
+Output:['Mon', 'Tue', 'Wed']
 Last three items of a list:
 
 days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -79,28 +80,26 @@ Output: ['Fri', 'Sat', 'Sun']
 Everything but the last:
 
 days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-days[:-1] 
-Output: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] 
+days[:-1]
+Output: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 Everything but the last two:
 
 days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-days[:-2] 
-Output: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'] 
+days[:-2]
+Output: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 A single in a dictionary can be accessed using its key:
 
 phone_numbers = {"John Smith":"+37682929928","Marry Simpons":"+423998200919"}
 phone_numbers["Marry Simpsons"]
 Output: '+423998200919'
 
-****************************************************************************8
-
-Conditionals
+## Conditionals
 
 Bonus Code: Using "and" and "or" in a Conditional
 You learned to check for one single condition:
 
 x = 1
- 
+
 if x == 1:
     print("Yes")
 else:
@@ -109,7 +108,7 @@ You can also check if two conditions are met at the same time using an and opera
 
 x = 1
 y = 1
- 
+
 if x == 1 and y==1:
     print("Yes")
 else:
@@ -120,16 +119,15 @@ You can also check if one of two conditions are met using an or operator:
 
 x = 1
 y = 1
- 
+
 if x == 1 or y==2:
     print("Yes")
 else:
     print("No")
 That will return Yes since at least one of the conditions is True. In this case x == 1 is True.
 
-#####
+## Summary: Functions and Conditionals
 
-Summary: Functions and Conditionals
 In this section you learned to:
 
 Define a function:
@@ -139,7 +137,7 @@ def cube_volume(a):
 Write a conditional block:
 
 message = "hello there"
- 
+
 if "hello" in message:
     print("hi")
 else:
@@ -147,7 +145,7 @@ else:
 Write a conditional block of multiple conditions:
 
 message = "hello there"
- 
+
 if "hello" in message:
     print("hi")
 elif "hi" in message:
@@ -160,7 +158,7 @@ Use the and operator to check if both conditions are True at the same time:
 
 x = 1
 y = 1
- 
+
 if x == 1 and y==1:
     print("Yes")
 else:
@@ -171,7 +169,7 @@ Use the or operator to check if at least one condition is True:
 
 x = 1
 y = 2
- 
+
 if x == 1 or y==2:
     print("Yes")
 else:
@@ -187,9 +185,8 @@ or
 type("abc") == str
 type([1, 2, 3]) == lst
 
-#####################################################################################
+## Summary: Processing User Input
 
-Summary: Processing User Input
 In this section you learned that:
 
 A Python program can get user input via the input function:
@@ -215,10 +212,8 @@ experience_years = 1.5
 print("Hi {}, you have {} years of experience".format(name, experience_years))
 Output: Hi Sim, you have 1.5 years of experience.
 
+## For Loop Over a Function
 
-#############################################
-
-For Loop Over a Function
 Note that using loops you can call any function multiple times, even your own functions. Let's suppose we defined this function:
 
 def celsius_to_kelvin(cels):
@@ -226,7 +221,7 @@ def celsius_to_kelvin(cels):
 That is a function that gets a number as input, adds 273.15 to it and returns the result. A for loop allows us to execute that function over a list of numbers:
 
 monday_temperatures = [9.1, 8.8, -270.15]
- 
+
 for temperature in monday_temperatures:
     print(celsius_to_kelvin(temperature))
 The output of that would be:
@@ -239,22 +234,17 @@ So, in the first iteration celsius_to_kelvin(9.1) was executed, in the second ce
 
 That's just something to keep in mind.
 
+## Bonus Code: Dictionary Loop and String Formatting
 
-
-##########################################
-
-Bonus Code: Dictionary Loop and String Formatting
 You can combine a dictionary for loop with string formatting to create text containing information from the dictionary:
 
 phone_numbers = {"John Smith": "+37682929928", "Marry Simpons": "+423998200919"}
- 
+
 for pair in phone_numbers.items():
     print("{} has as phone number {}".format(pair[0], pair[1]))
 
+## Summary: Loops
 
-###############################################
-
-Summary: Loops
 In this section you learned that:
 
 For loops are useful for executing a command over a large number of items.
@@ -270,8 +260,6 @@ B
 C
 
 The name after for (e.g. letter) is just a variable name
-
-
 
 You can loop over dictionary keys:
 
@@ -298,13 +286,11 @@ You can loop over dictionary items:
 phone_numbers = {"John Smith":"+37682929928","Marry Simpons":"+423998200919"}
 for key, value in phone_numbers.items():
     print(key, value)
-Output: 
+Output:
 
 ('John Smith', '+37682929928')
 
 ('Marry Simpons', '+423998200919')
-
-
 
 While loops will run as long as a condition is true:
 
@@ -312,10 +298,8 @@ while datetime.datetime.now() < datetime.datetime(2090, 8, 20, 19, 30, 20):
     print("It's not yet 19:30:20 of 2090.8.20")
 The loop above will print out the string inside print() over and over again until the 20th of August, 2090.
 
-#########################################################
+## Summary: List Comprehensions
 
-
-Summary: List Comprehensions
 In this section you learned that:
 
 A list comprehension is an expression that creates a list by iterating over another container.
@@ -335,29 +319,28 @@ List comprehension with an if and else condition:
 [i*2 if i>0 else 0 for i in [1, -2, 10]]
 Output: [2, 0, 20]
 
-###########################
+## Summary: More on Functions
 
-Summary: More on Functions
 In this section you learned that:
 
 Functions can have more than one parameter:
 
 def volume(a, b, c):
-    return a * b * c
+    return a *b* c
 Functions can have default parameters (e.g. coefficient):
 
 def converter(feet, coefficient = 3.2808):
     meters = feet / coefficient
     return meters
- 
+
 print(converter(10))
 Output: 3.0480370641306997
 
 Arguments can be passed as non-keyword (positional) arguments (e.g. a) or keyword arguments (e.g. b=2 and c=10):
 
 def volume(a, b, c):
-    return a * b * c
- 
+    return a *b* c
+
 print(volume(1, b=2, c=10))
 An *args parameter allows the  function to be called with an arbitrary number of non-keyword arguments:
 
@@ -370,9 +353,32 @@ An **kwargs parameter allows the function to be called with an arbitrary number 
 
 def find_winner(**kwargs):
     return max(kwargs, key = kwargs.get)
- 
+
 print(find_winner(Andy = 17, Marry = 19, Sim = 45, Kae = 34))
 Output: Sim
 
-Here's a summary of function elements:
+## Summary: File Processing
 
+In this section you learned that:
+
+    You can read an existing file with Python:
+
+    with open("file.txt") as file:
+        content = file.read()
+
+    You can create a new file with Python and write some text on it:
+
+    with open("file.txt", "w") as file:
+        content = file.write("Sample text")
+
+    You can append text to an existing file without overwriting it:
+
+    with open("file.txt", "a") as file:
+        content = file.write("More sample text")
+
+    You can both append and read a file with:
+
+    with open("file.txt", "a+") as file:
+        content = file.write("Even more sample text")
+        file.seek(0)
+        content = file.read()
